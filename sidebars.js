@@ -51,5 +51,13 @@ module.exports = {
         'data-processing/sample-datasets',
       ],
     },
+    {
+      type: 'category',
+      label: 'Visualization',
+      items: [
+        'visualization/introduction',
+        'visualization/matplotlib',
+      ],
+    },
   ],
 };
