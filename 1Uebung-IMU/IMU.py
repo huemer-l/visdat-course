@@ -48,16 +48,12 @@ df.rename(columns={
     'gyroscope_z': 'gyro_z'
 }, inplace=True)
 
-# ... nach df.rename(...)
 
 # --- OFFSET KORREKTUR ---
-# Schau dir deinen ersten Plot "Raw Accelerometer Data" an.
-# Wenn die Y-Achse im Stillstand (am Anfang) nicht bei 0 (oder 9.81) liegt,
-# sondern z.B. bei 0.5, dann ziehe diesen Wert hier ab.
 
 offset_x = 0.8
 offset_y = -0.16 
-offset_z = 0.0
+offset_z = 0
 
 print(f"Applying manual offsets: X={offset_x}, Y={offset_y}, Z={offset_z}")
 
@@ -74,7 +70,7 @@ df['gyro_x'] = df['gyro_x'] - gyro_offset_x
 df['gyro_y'] = df['gyro_y'] - gyro_offset_y
 df['gyro_z'] = df['gyro_z'] - gyro_offset_z
 
-# ... weiter mit Gyroscope units check ...
+
 
 # Check gyroscope units - many apps export deg/s, but Madgwick expects rad/s
 gyro_cols = ['gyro_x', 'gyro_y', 'gyro_z']
@@ -385,7 +381,4 @@ print(f"Reconstructed distance: {reconstructed_distance:.3f} meters")
 print(f"Start position: {start_pos}")
 print(f"End position: {end_pos}")
 
-# If you measured the actual distance, compare:
-# actual_distance = 1.0  # meters (your measurement)
-# error = abs(reconstructed_distance - actual_distance)
-# print(f"Error: {error:.3f} meters ({error/actual_distance*100:.1f}%)")
+
